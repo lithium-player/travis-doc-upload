@@ -59,10 +59,13 @@ Also in `scripts`, create a file [`travis-doc-upload.cfg`](https://github.com/km
 PROJECT_NAME=futf
 DOCS_REPO=kmcallister/docs.git
 SSH_KEY_TRAVIS_ID=0a6446eb3ae3
+CRATE_NAME=futf
 ```
 
 `PROJECT_NAME` is a subdirectory in your docs repo, which is identified by `DOCS_REPO`.
 `SSH_KEY_TRAVIS_ID` is the hex ID generated in the previous step.
+`CRATE_NAME` is the name of the crate to redirect from the base of the
+`ROJECT_NAME` folder
 
 ### Step 3
 
