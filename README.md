@@ -28,7 +28,7 @@ So, this is what I did:
 
 ### Step 1
 
-Run this command in a directory named `scripts` in your Rust project:
+Run this command in a directory named `.travis` in your Rust project:
 
 ```
 travis encrypt-file ~/path-to-docs-key/.../id_rsa
@@ -37,7 +37,7 @@ travis encrypt-file ~/path-to-docs-key/.../id_rsa
 Travis will guess your repo's name on GitHub. Make sure this is correct, especially if your repo is
 owned by an organization!
 
-This command should create `id_rsa.enc` inside `scripts`. Check this file
+This command should create `id_rsa.enc` inside `.travis`. Check this file
 into Git; *do not* check in `id_rsa`! Keeping it outside the source tree, as
 illustrated above, is safest.
 
@@ -53,7 +53,7 @@ You don't need to do this. Just save the hex ID of the file, which in the above 
 
 ### Step 2
 
-Also in `scripts`, create a file [`travis-doc-upload.cfg`](https://github.com/kmcallister/futf/blob/master/scripts/travis-doc-upload.cfg) similar to the following:
+Also in `.travis`, create a file [`travis-doc-upload.cfg`](https://github.com/kmcallister/futf/blob/master/scripts/travis-doc-upload.cfg) similar to the following:
 
 ```
 PROJECT_NAME=futf
@@ -64,8 +64,9 @@ CRATE_NAME=futf
 
 `PROJECT_NAME` is a subdirectory in your docs repo, which is identified by `DOCS_REPO`.
 `SSH_KEY_TRAVIS_ID` is the hex ID generated in the previous step.
-`CRATE_NAME` is the name of the crate to redirect from the base of the
-`ROJECT_NAME` folder
+`CRATE_NAME` is the name of the crate to redirect to, `doc/$PROJECT_NAME`
+-> `doc/$PROJECT_NAME/$CRATE_NAME/index.html`
+`PROJECT_NAME` folder
 
 ### Step 3
 
