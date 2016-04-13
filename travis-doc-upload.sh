@@ -27,7 +27,8 @@ git config user.name "doc upload bot"
 git config user.email "nobody@example.com"
 rm -rf $PROJECT_NAME
 mv ../target/doc $PROJECT_NAME
-echo "<meta http-equiv=refresh content=0;url=${CRATE_NAME/-/_}/index.html>" > $PROJECT_NAME/index.html
+export NAME=$(echo $CRATE_NAME | sed -e 's/-/_/g')
+echo "<meta http-equiv=refresh content=1;url=$NAME/index.html>" > $PROJECT_NAME/index.html
 git add -A $PROJECT_NAME
 git commit -qm "doc upload for $PROJECT_NAME ($TRAVIS_REPO_SLUG)"
 git push -q origin gh-pages
